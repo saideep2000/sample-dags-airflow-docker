@@ -43,47 +43,22 @@ Credentials:
 airflow
 airflow
 
+Now let's remove the example volumes that we have in our airflow:
 
+docker-compose down -v
 
+Now change the airflow_core_load_examples to 'false'
 
-python3 -m venv py_env
+docker-compose up airflow-init
 
-source py_env/bin/activate
+docker-compose up -d
 
-src : https://github.com/apache/airflow?tab=readme-ov-file#installing-from-pypi
+Now again login and see if examples are there or not
 
-pip install 'apache-airflow==2.9.1' \
- --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.9.1/constraints-3.11.txt"
+Let's create our first DAG.
 
-If error in gcc :
+In the DAG folder create the dag.
 
-xcode-select --install
-
-pip install --upgrade pip
-
-export AIRFLOW_HOME="$(pwd)"
-
-Create sql db: 
-
-airflow db init
-
-airflow webserver -p 8080
-
-airflow users create --username admin --firstname saideep --lastname samineni --role Admin --email samineni.sa@northeastern.edu
-
-Set the password :
-
-saideepsamineni
-
-Now login to the airflow
-
-Now in different terminal we will start the scheduler :
-
-export AIRFLOW_HOME="$(pwd)"
-
-source py_env/bin/activate
-
-airflow scheduler
 
 
 
